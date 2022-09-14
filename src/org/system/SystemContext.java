@@ -2,10 +2,7 @@ package org.system;
 
 import org.system.http.HttpServer;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -365,8 +362,6 @@ public class SystemContext
 			{
 				this.stopping.add(publishment);
 			}
-
-
 		}
 	}
 
@@ -449,6 +444,12 @@ public class SystemContext
 
 		public SystemHTTPServer(String context, Integer port)
 		{
+			this.context = context;
+
+			this.port = port;
+
+			//
+
 			try
 			{
 				this.canonicalURL = new File(".").getCanonicalPath();
@@ -481,6 +482,19 @@ public class SystemContext
 								System.out.println("Error Creating Server Directories; Please Configure Yourself.");
 							}
 						}
+					}
+
+					try
+					{
+						File f = new File(SystemHTTPServer.baseURL+File.separator+this.context);
+
+						f.mkdirs();
+
+						f = null;
+					}
+					catch(Exception e)
+					{
+						System.out.println(e);
 					}
 				}
 				else
@@ -551,7 +565,29 @@ public class SystemContext
 			{
 				for(;;)
 				{
+					try
+					{
+						BufferedReader reader01 = new BufferedReader(new FileReader(new File("")));
 
+						BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(this.reference.connections.get(0).getOutputStream()));
+
+						String line = "";
+
+						while((line=reader01.readLine())!=null)
+						{
+							writer.write(line);
+
+							writer.flush();
+						}
+
+						writer.close();
+
+						writer = null;
+					}
+					catch(Exception e)
+					{
+						System.out.println(e);
+					}
 				}
 			}
 		}
