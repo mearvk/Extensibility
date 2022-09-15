@@ -5,6 +5,7 @@ import org.system.http.HttpServer;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -432,14 +433,13 @@ public class SystemContext
 		public static final String baseURL = "/server";
 		public static final String configFile = "context.txt";
 
+		public ArrayList<Socket> connections = new ArrayList<Socket>();
+
 		public Responder responder = new Responder(this);
 
 		public Connector connector = new Connector(this);
 
-		public ArrayList<Socket> connections = new ArrayList<Socket>();
-
 		public String context;
-
 		public Integer port;
 
 		public SystemHTTPServer(String context, Integer port)
@@ -494,7 +494,7 @@ public class SystemContext
 					}
 					catch(Exception e)
 					{
-						System.out.println(e);
+						e.printStackTrace();
 					}
 				}
 				else
@@ -507,14 +507,13 @@ public class SystemContext
 				System.out.println("Error Creating Server Directories; Please Configure Yourself. It.");
 			}
 
-			this.context = context;
+			this.connector.run();
 
-			this.port = port;
+			this.responder.run();
 		}
 
 		public static class Connector implements Runnable
 		{
-			public Integer port;
 			public ServerSocket ss;
 
 			public SystemHTTPServer reference;
@@ -533,7 +532,7 @@ public class SystemContext
 
 					try
 					{
-						this.ss = new ServerSocket(this.port);
+						this.ss = new ServerSocket(this.reference.port);
 
 						s = this.ss.accept();
 
@@ -553,11 +552,13 @@ public class SystemContext
 
 			public Integer port;
 
-			public ArrayList<Socket> connections = new ArrayList<Socket>();
+			public ArrayList<Socket> connections;
 
 			public Responder(SystemHTTPServer reference)
 			{
 				this.reference = reference;
+
+				this.connections = reference.connections;
 			}
 
 			@Override
@@ -565,28 +566,73 @@ public class SystemContext
 			{
 				for(;;)
 				{
+					Socket socket = null;
+
 					try
 					{
-						BufferedReader reader01 = new BufferedReader(new FileReader(new File("")));
+						StringBuffer buffer = new StringBuffer();
 
-						BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(this.reference.connections.get(0).getOutputStream()));
+						String line;
 
-						String line = "";
+						BufferedWriter writer;
 
-						while((line=reader01.readLine())!=null)
+						BufferedReader reader;
+
+						if(this.connections.size()>0)
 						{
-							writer.write(line);
+							socket = this.connections.remove(0);
 
-							writer.flush();
+							reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+							line = reader.readLine();
+
+							reader = new BufferedReader(new FileReader(new File(this.reference.canonicalURL+File.separator+SystemHTTPServer.baseURL+File.separator+line)));
+
+							writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
+							while((line=reader.readLine())!=null)
+							{
+								try
+								{
+									buffer.append(line);
+								}
+								catch (Exception e)
+								{
+									//System.out.println(e);
+								}
+							}
+
+							if(buffer.length()>0)
+							{
+								writer.write(buffer.toString());
+
+								writer.flush();
+							}
+
+							writer.close();
+
+							writer = null;
 						}
+					}
+					catch(SocketException se)
+					{
+						if(se.getMessage().trim().toLowerCase().contains("closed"))
+						{
+							try
+							{
+								socket.close();
 
-						writer.close();
-
-						writer = null;
+								socket = null;
+							}
+							catch(Exception e)
+							{
+								System.out.println("");
+							}
+						}
 					}
 					catch(Exception e)
 					{
-						System.out.println(e);
+						System.out.println("");
 					}
 				}
 			}

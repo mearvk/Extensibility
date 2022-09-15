@@ -7,6 +7,8 @@ public class Main
 {
 	public static void main(String... args)
 	{
+		/*
+
 		SystemContext context001 = new SystemContext
 		(
 			new SystemContext.Username("username"),
@@ -47,6 +49,8 @@ public class Main
 			new SystemContext.SystemPublishment(6, new SystemContext.SystemPublishment.SystemPart(new org.system.http.partwise.HttpServer.Part006()), new SystemContext.SystemPublishment.SystemPartParametry(1,1,"//documents/document006.xml"))
 		);
 
+		*/
+
 		SystemContext context004 = new SystemContext
 		(
 			new SystemContext.Username("username"),
@@ -65,6 +69,8 @@ public class Main
 			new SystemContext.SystemPublishment(8, new SystemContext.SystemPublishment.SystemPart(new org.system.http.partwise.HttpServer.Part008()), new SystemContext.SystemPublishment.SystemPartParametry(8,1,"//documents/document-008.xml"), new SystemContext.SamRegistry("//documents/registry-008.xml"), new SystemContext.Username("username"), new SystemContext.Password("password"))
 		);
 
+		/*
+
 		RMISystemContext context005 = new RMISystemContext
 		(
 			new RMISystemContext.Username("username"),
@@ -82,5 +88,7 @@ public class Main
 			new RMISystemContext.SystemPublishment(7, new RMISystemContext.SystemPublishment.SystemPart(new org.system.http.partwise.HttpServer.Part007()), new RMISystemContext.SystemPublishment.SystemPartParametry(7,1,"//documents/document-007.xml"), new RMISystemContext.SamRegistry("//documents/registry-007.xml"), new RMISystemContext.Username("username"), new RMISystemContext.Password("password")),
 			new RMISystemContext.SystemPublishment(8, new RMISystemContext.SystemPublishment.SystemPart(new org.system.http.partwise.HttpServer.Part008()), new RMISystemContext.SystemPublishment.SystemPartParametry(8,1,"//documents/document-008.xml"), new RMISystemContext.SamRegistry("//documents/registry-008.xml"), new RMISystemContext.Username("username"), new RMISystemContext.Password("password"))
 		);
+
+		*/
 	}
 }
