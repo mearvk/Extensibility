@@ -161,6 +161,7 @@ public class SystemContext
 		public static final Integer PORT = 7777;
 
 		public ArrayList<SystemContextStructure> structures = new ArrayList<>(100);
+
 		public HttpServer server;
 		public String url;
 
@@ -430,7 +431,226 @@ public class SystemContext
 	{
 		public String canonicalURL = "";
 
+		public static String productionURL = "";
+
+		public static final String baseURL = "shared";
+
+		public static final String configFile = "context.txt";
+
+		public ArrayList<Socket> connections = new ArrayList<Socket>();
+
+		public Responder responder = new Responder(this);
+
+		public Connector connector = new Connector(this);
+
+		public String context;
+
+		public Integer port;
+		public SystemHTTPServer(String context, Integer port)
+		{
+			this.context = context;
+
+			this.port = port;
+
+			//
+
+			try
+			{
+				SystemHTTPServer.productionURL = new File(".").getCanonicalPath()+"/out/production/mearvk"+File.separator+SystemHTTPServer.baseURL+File.separator+"system"+File.separator+this.port.toString()+File.separator+this.context;
+
+				this.canonicalURL = new File("./out/production/mearvk").getCanonicalPath();
+
+				File directory = new File(this.canonicalURL+File.separator+SystemHTTPServer.baseURL);
+
+				if(directory.isDirectory())
+				{
+					File config = new File(this.canonicalURL+File.separator+SystemHTTPServer.baseURL+File.separator+SystemHTTPServer.configFile);
+
+					if(config.exists())
+					{
+						BufferedReader reader = new BufferedReader(new FileReader(config.getCanonicalPath()));
+
+						String line = null;
+
+						while((line=reader.readLine())!=null)
+						{
+							try
+							{
+								File f = new File(this.canonicalURL+File.separator+SystemHTTPServer.baseURL+File.separator+line);
+
+								if(!f.exists())
+								{
+									f.mkdirs();
+								}
+							}
+							catch (Exception e)
+							{
+								System.out.println("Error Creating Server Directories; Please Configure Yourself.");
+							}
+						}
+					}
+
+					try
+					{
+						File f = new File(SystemHTTPServer.productionURL);
+
+						f.mkdirs();
+
+						f = null;
+					}
+					catch(Exception e)
+					{
+						e.printStackTrace();
+					}
+				}
+				else
+				{
+					directory.mkdirs();
+				}
+			}
+			catch(Exception e)
+			{
+				System.out.println("Error Creating Server Directories; Please Configure Yourself. It.");
+			}
+
+			this.connector.run();
+
+			this.responder.run();
+		}
+
+		public static class Connector implements Runnable
+		{
+			public ServerSocket ss;
+
+			public SystemHTTPServer reference;
+
+			public Connector(SystemHTTPServer reference)
+			{
+				this.reference = reference;
+			}
+
+			@Override
+			public void run()
+			{
+				for(;;)
+				{
+					Socket s;
+
+					try
+					{
+						this.ss = new ServerSocket(this.reference.port);
+
+						s = this.ss.accept();
+
+						this.reference.connections.add(s);
+					}
+					catch (Exception e)
+					{
+						return;
+					}
+				}
+			}
+		}
+
+		public static class Responder implements Runnable
+		{
+			public SystemHTTPServer reference;
+
+			public Integer port;
+
+			public ArrayList<Socket> connections;
+
+			public Responder(SystemHTTPServer reference)
+			{
+				this.reference = reference;
+
+				this.connections = reference.connections;
+			}
+
+			@Override
+			public void run()
+			{
+				for(;;)
+				{
+					Socket socket = null;
+
+					try
+					{
+						StringBuffer buffer = new StringBuffer();
+
+						String line;
+
+						BufferedWriter writer;
+
+						BufferedReader reader;
+
+						if(this.connections.size()>0)
+						{
+							socket = this.connections.remove(0);
+
+							reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+							line = reader.readLine();
+
+							reader = new BufferedReader(new FileReader(new File(this.reference.canonicalURL+File.separator+SystemHTTPServer.baseURL+File.separator+line)));
+
+							writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+
+							while((line=reader.readLine())!=null)
+							{
+								try
+								{
+									buffer.append(line);
+								}
+								catch (Exception e)
+								{
+									//System.out.println(e);
+								}
+							}
+
+							if(buffer.length()>0)
+							{
+								writer.write(buffer.toString());
+
+								writer.flush();
+							}
+
+							writer.close();
+
+							writer = null;
+						}
+					}
+					catch(SocketException se)
+					{
+						if(se.getMessage().trim().toLowerCase().contains("closed"))
+						{
+							try
+							{
+								socket.close();
+
+								socket = null;
+							}
+							catch(Exception e)
+							{
+								System.out.println("");
+							}
+						}
+					}
+					catch(Exception e)
+					{
+						System.out.println("");
+					}
+				}
+			}
+		}
+	}
+
+	public static class SystemContextHTTPServer
+	{
+		public String canonicalURL = "";
+
 		public static final String baseURL = "/server";
+
 		public static final String configFile = "context.txt";
 
 		public ArrayList<Socket> connections = new ArrayList<Socket>();
@@ -442,7 +662,7 @@ public class SystemContext
 		public String context;
 		public Integer port;
 
-		public SystemHTTPServer(String context, Integer port)
+		public SystemContextHTTPServer(String context, Integer port)
 		{
 			this.context = context;
 
@@ -516,9 +736,9 @@ public class SystemContext
 		{
 			public ServerSocket ss;
 
-			public SystemHTTPServer reference;
+			public SystemContextHTTPServer reference;
 
-			public Connector(SystemHTTPServer reference)
+			public Connector(SystemContextHTTPServer reference)
 			{
 				this.reference = reference;
 			}
@@ -548,13 +768,13 @@ public class SystemContext
 
 		public static class Responder implements Runnable
 		{
-			public SystemHTTPServer reference;
+			public SystemContextHTTPServer reference;
 
 			public Integer port;
 
 			public ArrayList<Socket> connections;
 
-			public Responder(SystemHTTPServer reference)
+			public Responder(SystemContextHTTPServer reference)
 			{
 				this.reference = reference;
 

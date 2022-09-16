@@ -55,8 +55,8 @@ public class Main
 		(
 			new SystemContext.Username("username"),
 			new SystemContext.Password("password"),
-			new SystemContext.SystemHTTPServer("http://www.mearvk.org/system/http-server/listeners/http-context-listener",39998),
-			new SystemContext.SystemContextChangeListener("http://www.mearvk.org/system/http-server/listeners/change-context-listener", 40000),
+			new SystemContext.SystemHTTPServer("www/mearvk/org/system/http-server/listeners/http-context-listener",39998),
+			new SystemContext.SystemContextChangeListener("www/mearvk/org/system/http-server/listeners/change-context-listener", 40000),
 			new SystemContext.SystemContextInitializer("//dynamic"),
 			new SystemContext.SystemContextStructure("//system/servers","//http-server"),
 			new SystemContext.SystemPublishment(1, new SystemContext.SystemPublishment.SystemPart(new org.system.http.partwise.HttpServer.Part001()), new SystemContext.SystemPublishment.SystemPartParametry(1,1,"//documents/document-001.xml"), new SystemContext.SamRegistry("//documents/registry-001.xml"), new SystemContext.Username("username"), new SystemContext.Password("password")),
