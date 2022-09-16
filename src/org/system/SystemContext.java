@@ -429,11 +429,15 @@ public class SystemContext
 
 	public static class SystemHTTPServer
 	{
-		public String canonicalURL = "";
+		public static String canonicalURL = ".";
 
 		public static String productionURL = "";
 
-		public static final String baseURL = "shared";
+		public static String sharedURL = "";
+
+		public static String fullProductionURL = "";
+
+		public static final String fileURL = "shared";
 
 		public static final String configFile = "context.txt";
 
@@ -452,19 +456,21 @@ public class SystemContext
 
 			this.port = port;
 
-			//
-
 			try
 			{
-				SystemHTTPServer.productionURL = new File(".").getCanonicalPath()+"/out/production/mearvk"+File.separator+SystemHTTPServer.baseURL+File.separator+"system"+File.separator+this.port.toString()+File.separator+this.context;
+				SystemHTTPServer.canonicalURL = new File(SystemHTTPServer.canonicalURL).getCanonicalPath();
 
-				this.canonicalURL = new File("./out/production/mearvk").getCanonicalPath();
+				SystemHTTPServer.productionURL = new File(".").getCanonicalPath() + "/out/production/mearvk";
 
-				File directory = new File(this.canonicalURL+File.separator+SystemHTTPServer.baseURL);
+				SystemHTTPServer.fullProductionURL = SystemHTTPServer.productionURL + File.separator+SystemHTTPServer.sharedURL+File.separator+"system"+File.separator+this.port.toString()+File.separator+this.context;
+
+				//
+
+				File directory = new File(SystemHTTPServer.sharedURL);
 
 				if(directory.isDirectory())
 				{
-					File config = new File(this.canonicalURL+File.separator+SystemHTTPServer.baseURL+File.separator+SystemHTTPServer.configFile);
+					File config = new File(SystemHTTPServer.sharedURL+File.separator+SystemHTTPServer.configFile);
 
 					if(config.exists())
 					{
@@ -476,7 +482,7 @@ public class SystemContext
 						{
 							try
 							{
-								File f = new File(this.canonicalURL+File.separator+SystemHTTPServer.baseURL+File.separator+line);
+								File f = new File(this.canonicalURL+File.separator+SystemHTTPServer.sharedURL+File.separator+line);
 
 								if(!f.exists())
 								{
@@ -592,7 +598,7 @@ public class SystemContext
 
 							line = reader.readLine();
 
-							reader = new BufferedReader(new FileReader(new File(this.reference.canonicalURL+File.separator+SystemHTTPServer.baseURL+File.separator+line)));
+							reader = new BufferedReader(new FileReader(new File(this.reference.canonicalURL+File.separator+SystemHTTPServer.sharedURL+File.separator+line)));
 
 							writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
@@ -674,11 +680,11 @@ public class SystemContext
 			{
 				this.canonicalURL = new File(".").getCanonicalPath();
 
-				File directory = new File(this.canonicalURL+File.separator+SystemHTTPServer.baseURL);
+				File directory = new File(this.canonicalURL+File.separator+SystemHTTPServer.sharedURL);
 
 				if(directory.isDirectory())
 				{
-					File config = new File(this.canonicalURL+File.separator+SystemHTTPServer.baseURL+File.separator+SystemHTTPServer.configFile);
+					File config = new File(this.canonicalURL+File.separator+SystemHTTPServer.sharedURL+File.separator+SystemHTTPServer.configFile);
 
 					if(config.exists())
 					{
@@ -690,7 +696,7 @@ public class SystemContext
 						{
 							try
 							{
-								File f = new File(this.canonicalURL+File.separator+SystemHTTPServer.baseURL+File.separator+line);
+								File f = new File(this.canonicalURL+File.separator+SystemHTTPServer.sharedURL+File.separator+line);
 
 								if(!f.exists())
 								{
@@ -706,7 +712,7 @@ public class SystemContext
 
 					try
 					{
-						File f = new File(SystemHTTPServer.baseURL+File.separator+this.context);
+						File f = new File(SystemHTTPServer.sharedURL+File.separator+this.context);
 
 						f.mkdirs();
 
@@ -806,7 +812,7 @@ public class SystemContext
 
 							line = reader.readLine();
 
-							reader = new BufferedReader(new FileReader(new File(this.reference.canonicalURL+File.separator+SystemHTTPServer.baseURL+File.separator+line)));
+							reader = new BufferedReader(new FileReader(new File(this.reference.canonicalURL+File.separator+SystemHTTPServer.sharedURL+File.separator+line)));
 
 							writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
