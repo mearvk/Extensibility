@@ -482,7 +482,8 @@ public class SystemContext
 
 					try
 					{
-						File f = new File(SystemHTTPServer.productionURL);
+						File f = new File(SystemHTTPServer.sharedURL+File.separator+"systems"+File.separator+this.port.toString()+File.separator+this.context);
+
 
 						f.mkdirs();
 
@@ -670,11 +671,11 @@ public class SystemContext
 
 			try
 			{
-				SystemContextHTTPServer.canonicalURL = new File(SystemHTTPServer.canonicalURL).getCanonicalPath();
+				SystemContextHTTPServer.canonicalURL = new File(SystemContextHTTPServer.canonicalURL).getCanonicalPath();
 
 				SystemContextHTTPServer.productionURL = new File(".").getCanonicalPath() + "/out/production/mearvk";
 
-				SystemContextHTTPServer.sharedURL = SystemHTTPServer.productionURL + File.separator + "context";
+				SystemContextHTTPServer.sharedURL = SystemContextHTTPServer.productionURL + File.separator + "shared";
 
 				//
 
@@ -694,7 +695,7 @@ public class SystemContext
 						{
 							try
 							{
-								File f = new File(SystemContextHTTPServer.canonicalURL+File.separator+SystemContextHTTPServer.sharedURL+File.separator+line);
+								File f = new File(SystemContextHTTPServer.sharedURL+File.separator+line);
 
 								if(!f.exists())
 								{
@@ -710,7 +711,7 @@ public class SystemContext
 
 					try
 					{
-						File f = new File(SystemHTTPServer.sharedURL+File.separator+this.context);
+						File f = new File(SystemContextHTTPServer.sharedURL+File.separator+"contexts"+File.separator+this.port.toString()+File.separator+this.context);
 
 						f.mkdirs();
 
