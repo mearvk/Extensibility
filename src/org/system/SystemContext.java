@@ -435,6 +435,7 @@ public class SystemContext
 		public String context;
 
 		public Integer port;
+
 		public SystemHTTPServer(String context, Integer port)
 		{
 			this.context = context;
@@ -661,6 +662,7 @@ public class SystemContext
 
 		public String context;
 		public Integer port;
+
 
 		public SystemContextHTTPServer(String context, Integer port)
 		{
