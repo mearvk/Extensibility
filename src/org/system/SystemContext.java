@@ -158,13 +158,9 @@ public class SystemContext
 
 	public static class SystemContextChangeListener
 	{
-		public static final Integer PORT = 7777;
-
 		public ArrayList<SystemContextStructure> structures = new ArrayList<>(100);
 
 		public SystemContextHTTPServer server;
-
-		public String url;
 
 		public StateChangeEvent events = new StateChangeEvent(this);
 
