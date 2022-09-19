@@ -162,7 +162,8 @@ public class SystemContext
 
 		public ArrayList<SystemContextStructure> structures = new ArrayList<>(100);
 
-		public HttpServer server;
+		public SystemContextHTTPServer server;
+
 		public String url;
 
 		public StateChangeEvent events = new StateChangeEvent(this);
@@ -181,16 +182,7 @@ public class SystemContext
 
 		public SystemContextChangeListener(String url, Integer port)
 		{
-			this.url = url;
-
-			this.server = new HttpServer(port);
-
-			this.server.publish(this.url);
-		}
-
-		public SystemContextChangeListener()
-		{
-			this.server = new HttpServer(PORT);
+			this.server = new SystemContextHTTPServer(url, port);
 		}
 
 		public static class StateChangeEvent
@@ -437,7 +429,6 @@ public class SystemContext
 
 		public static String fullProductionURL = "";
 
-		public static final String fileURL = "shared";
 
 		public static final String configFile = "context.txt";
 
@@ -484,7 +475,7 @@ public class SystemContext
 						{
 							try
 							{
-								File f = new File(this.canonicalURL+File.separator+SystemHTTPServer.sharedURL+File.separator+line);
+								File f = new File(SystemHTTPServer.canonicalURL+File.separator+SystemHTTPServer.sharedURL+File.separator+line);
 
 								if(!f.exists())
 								{
@@ -600,7 +591,7 @@ public class SystemContext
 
 							line = reader.readLine();
 
-							reader = new BufferedReader(new FileReader(new File(this.reference.canonicalURL+File.separator+SystemHTTPServer.sharedURL+File.separator+line)));
+							reader = new BufferedReader(new FileReader(new File(SystemHTTPServer.sharedURL+File.separator+line)));
 
 							writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
@@ -612,7 +603,9 @@ public class SystemContext
 								}
 								catch (Exception e)
 								{
-									//System.out.println(e);
+									buffer.append(">> Error exception: "+e.getStackTrace().toString());
+
+									System.out.println(e);
 								}
 							}
 
@@ -640,13 +633,13 @@ public class SystemContext
 							}
 							catch(Exception e)
 							{
-								System.out.println("");
+								System.out.println(">> Error exception: please handle yourself.");
 							}
 						}
 					}
 					catch(Exception e)
 					{
-						System.out.println("");
+						System.out.println(">> Error exception: please handle yourself.");
 					}
 				}
 			}
@@ -655,9 +648,15 @@ public class SystemContext
 
 	public static class SystemContextHTTPServer
 	{
-		public String canonicalURL = "";
+		public static String canonicalURL = ".";
 
-		public static final String baseURL = "/server";
+		public static String productionURL = "";
+
+		public static String sharedURL = "";
+
+		public static String fullProductionURL = "";
+
+		public static final String fileURL = "context";
 
 		public static final String configFile = "context.txt";
 
@@ -680,13 +679,11 @@ public class SystemContext
 
 			try
 			{
-				this.canonicalURL = new File(".").getCanonicalPath();
-
-				File directory = new File(this.canonicalURL+File.separator+SystemHTTPServer.sharedURL);
+				File directory = new File(SystemContextHTTPServer.sharedURL);
 
 				if(directory.isDirectory())
 				{
-					File config = new File(this.canonicalURL+File.separator+SystemHTTPServer.sharedURL+File.separator+SystemHTTPServer.configFile);
+					File config = new File(SystemContextHTTPServer.sharedURL+File.separator+SystemContextHTTPServer.configFile);
 
 					if(config.exists())
 					{
@@ -698,7 +695,7 @@ public class SystemContext
 						{
 							try
 							{
-								File f = new File(this.canonicalURL+File.separator+SystemHTTPServer.sharedURL+File.separator+line);
+								File f = new File(SystemContextHTTPServer.canonicalURL+File.separator+SystemContextHTTPServer.sharedURL+File.separator+line);
 
 								if(!f.exists())
 								{
@@ -778,8 +775,6 @@ public class SystemContext
 		{
 			public SystemContextHTTPServer reference;
 
-			public Integer port;
-
 			public ArrayList<Socket> connections;
 
 			public Responder(SystemContextHTTPServer reference)
@@ -814,7 +809,7 @@ public class SystemContext
 
 							line = reader.readLine();
 
-							reader = new BufferedReader(new FileReader(new File(this.reference.canonicalURL+File.separator+SystemHTTPServer.sharedURL+File.separator+line)));
+							reader = new BufferedReader(new FileReader(new File(SystemContextHTTPServer.canonicalURL+File.separator+SystemContextHTTPServer.sharedURL+File.separator+line)));
 
 							writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
@@ -826,7 +821,9 @@ public class SystemContext
 								}
 								catch (Exception e)
 								{
-									//System.out.println(e);
+									buffer.append(e.getStackTrace().toString());
+
+									System.out.println(">> Error exception: "+e.getStackTrace().toString());
 								}
 							}
 
@@ -854,13 +851,13 @@ public class SystemContext
 							}
 							catch(Exception e)
 							{
-								System.out.println("");
+								System.out.println(">> Error exception: "+e.getStackTrace().toString());
 							}
 						}
 					}
 					catch(Exception e)
 					{
-						System.out.println("");
+						System.out.println(">> Error exception: "+e.getStackTrace().toString());
 					}
 				}
 			}
