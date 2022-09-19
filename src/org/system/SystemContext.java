@@ -462,7 +462,9 @@ public class SystemContext
 
 				SystemHTTPServer.productionURL = new File(".").getCanonicalPath() + "/out/production/mearvk";
 
-				SystemHTTPServer.fullProductionURL = SystemHTTPServer.productionURL + File.separator+SystemHTTPServer.sharedURL+File.separator+"system"+File.separator+this.port.toString()+File.separator+this.context;
+				SystemHTTPServer.sharedURL = SystemHTTPServer.productionURL + File.separator + "shared";
+
+				SystemHTTPServer.fullProductionURL = SystemHTTPServer.sharedURL + File.separator + "system" + File.separator + this.port.toString() + File.separator + this.context;
 
 				//
 
