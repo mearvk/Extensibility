@@ -423,9 +423,6 @@ public class SystemContext
 
 		public static String sharedURL = "";
 
-		public static String fullProductionURL = "";
-
-
 		public static final String configFile = "context.txt";
 
 		public ArrayList<Socket> connections = new ArrayList<Socket>();
@@ -450,8 +447,6 @@ public class SystemContext
 				SystemHTTPServer.productionURL = new File(".").getCanonicalPath() + "/out/production/mearvk";
 
 				SystemHTTPServer.sharedURL = SystemHTTPServer.productionURL + File.separator + "shared";
-
-				SystemHTTPServer.fullProductionURL = SystemHTTPServer.sharedURL + File.separator + "system" + File.separator + this.port.toString() + File.separator + this.context;
 
 				//
 
@@ -675,6 +670,14 @@ public class SystemContext
 
 			try
 			{
+				SystemContextHTTPServer.canonicalURL = new File(SystemHTTPServer.canonicalURL).getCanonicalPath();
+
+				SystemContextHTTPServer.productionURL = new File(".").getCanonicalPath() + "/out/production/mearvk";
+
+				SystemContextHTTPServer.sharedURL = SystemHTTPServer.productionURL + File.separator + "context";
+
+				//
+
 				File directory = new File(SystemContextHTTPServer.sharedURL);
 
 				if(directory.isDirectory())
