@@ -569,6 +569,8 @@ public class SystemContext
 
 					try
 					{
+						Thread.sleep(25);
+
 						StringBuffer buffer = new StringBuffer();
 
 						String line;
@@ -580,6 +582,10 @@ public class SystemContext
 						if(this.connections.size()>0)
 						{
 							socket = this.connections.remove(0);
+
+							socket.setKeepAlive(true);
+
+							socket.setSoTimeout(60000);
 
 							reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
@@ -785,6 +791,8 @@ public class SystemContext
 
 					try
 					{
+						Thread.sleep(25);
+
 						StringBuffer buffer = new StringBuffer();
 
 						String line;
@@ -796,6 +804,10 @@ public class SystemContext
 						if(this.connections.size()>0)
 						{
 							socket = this.connections.remove(0);
+
+							socket.setKeepAlive(true);
+
+							socket.setSoTimeout(60000);
 
 							reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
