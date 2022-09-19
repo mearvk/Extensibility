@@ -245,6 +245,7 @@ public class SystemContext
 		public static class OnUnregisterListener implements ContextListener, Registrar
 		{
 			public ArrayList<OnUnregisterListener> listeners = new ArrayList<>(100);
+
 			public SystemContextChangeListener systemlistener;
 
 			public OnUnregisterListener(SystemContextChangeListener listener)
@@ -261,6 +262,7 @@ public class SystemContext
 		public static class OnQuitListener implements ContextListener, Registrar
 		{
 			public ArrayList<OnQuitListener> listeners = new ArrayList<>(100);
+
 			public SystemContextChangeListener systemlistener;
 
 			public OnQuitListener(SystemContextChangeListener listener)
@@ -277,6 +279,7 @@ public class SystemContext
 		public static class OnConnectListener implements ContextListener, Registrar
 		{
 			public ArrayList<OnConnectListener> listeners = new ArrayList<>(100);
+
 			public SystemContextChangeListener systemlistener;
 
 			public OnConnectListener(SystemContextChangeListener listener)
