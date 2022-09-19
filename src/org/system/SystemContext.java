@@ -585,8 +585,6 @@ public class SystemContext
 
 							socket.setKeepAlive(true);
 
-							socket.setSoTimeout(60000);
-
 							reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
 							line = reader.readLine();
@@ -806,8 +804,6 @@ public class SystemContext
 							socket = this.connections.remove(0);
 
 							socket.setKeepAlive(true);
-
-							socket.setSoTimeout(60000);
 
 							reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
