@@ -661,8 +661,8 @@ public class SystemContext
 		public Connector connector = new Connector(this);
 
 		public String context;
-		public Integer port;
 
+		public Integer port;
 
 		public SystemContextHTTPServer(String context, Integer port)
 		{
