@@ -211,6 +211,7 @@ public class SystemContext
 		public static class OnRejectListener implements ContextListener, Registrar
 		{
 			public ArrayList<OnRejectListener> listeners = new ArrayList<>(100);
+
 			public SystemContextChangeListener systemlistener;
 
 			public OnRejectListener(SystemContextChangeListener listener)
@@ -227,6 +228,7 @@ public class SystemContext
 		public static class OnRegisterListener implements ContextListener, Registrar
 		{
 			public ArrayList<OnRegisterListener> listeners = new ArrayList<>(100);
+
 			public SystemContextChangeListener systemlistener;
 
 			public OnRegisterListener(SystemContextChangeListener listener)
