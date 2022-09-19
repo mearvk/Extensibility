@@ -322,6 +322,7 @@ public class SystemContext
 		public ArrayList<SystemPublishment> starting = new ArrayList<SystemPublishment>();
 
 		public ArrayList<SystemContextStructure> structures = new ArrayList<SystemContextStructure>();
+
 		public ArrayList<SystemContext> contexts = new ArrayList<SystemContext>();
 
 		public String base = "//";
