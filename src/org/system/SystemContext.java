@@ -508,12 +508,12 @@ public class SystemContext
 				System.out.println("Error Creating Server Directories; Please Configure Yourself. It.");
 			}
 
-			this.connector.run();
+			this.connector.start();
 
-			this.responder.run();
+			this.responder.start();
 		}
 
-		public static class Connector implements Runnable
+		public static class Connector extends Thread
 		{
 			public ServerSocket ss;
 
@@ -547,11 +547,9 @@ public class SystemContext
 			}
 		}
 
-		public static class Responder implements Runnable
+		public static class Responder extends Thread
 		{
 			public SystemHTTPServer reference;
-
-			public Integer port;
 
 			public ArrayList<Socket> connections;
 
@@ -650,8 +648,6 @@ public class SystemContext
 
 		public static String sharedURL = "";
 
-		public static String fullProductionURL = "";
-
 		public static final String fileURL = "context";
 
 		public static final String configFile = "context.txt";
@@ -728,12 +724,12 @@ public class SystemContext
 				System.out.println("Error Creating Server Directories; Please Configure Yourself. It.");
 			}
 
-			this.connector.run();
+			this.connector.start();
 
-			this.responder.run();
+			this.responder.start();
 		}
 
-		public static class Connector implements Runnable
+		public static class Connector extends Thread
 		{
 			public ServerSocket ss;
 
@@ -767,7 +763,7 @@ public class SystemContext
 			}
 		}
 
-		public static class Responder implements Runnable
+		public static class Responder extends Thread
 		{
 			public SystemContextHTTPServer reference;
 
