@@ -53,12 +53,12 @@ public class Main
 
 		SystemContext context004 = new SystemContext
 		(
-			new SystemContext.Username("username"),
-			new SystemContext.Password("password"),
-			new SystemContext.SystemHTTPServer("www.mearvk.org","listeners/http-context-listener", 39998),
-			new SystemContext.SystemContextChangeListener("www.mearvk.org","listeners/change-context-listener", 40000),
-			new SystemContext.SystemContextInitializer("//dynamic"),
-			new SystemContext.SystemContextStructure("//system/servers","//http-server"),
+			new SystemContext.Username("jndi://username"),
+			new SystemContext.Password("jndi://password"),
+			new SystemContext.SystemHTTPServer("www.mearvk.org","http-server", 39998),
+			new SystemContext.SystemContextChangeListener("www.mearvk.org","change-context-listener", 40000),
+			new SystemContext.SystemContextInitializer("dynamic"),
+			new SystemContext.SystemContextStructure("www.mearvk.org","system/servers","http-server"),
 			new SystemContext.SystemPublishment(1, new SystemContext.SystemPublishment.SystemPart(new org.system.http.partwise.HttpServer.Part001()), new SystemContext.SystemPublishment.SystemPartParametry(1,1,"//documents/document-001.xml"), new SystemContext.SamRegistry("//documents/registry-001.xml"), new SystemContext.Username("username"), new SystemContext.Password("password")),
 			new SystemContext.SystemPublishment(2, new SystemContext.SystemPublishment.SystemPart(new org.system.http.partwise.HttpServer.Part002()), new SystemContext.SystemPublishment.SystemPartParametry(2,1,"//documents/document-002.xml"), new SystemContext.SamRegistry("//documents/registry-002.xml"), new SystemContext.Username("username"), new SystemContext.Password("password")),
 			new SystemContext.SystemPublishment(3, new SystemContext.SystemPublishment.SystemPart(new org.system.http.partwise.HttpServer.Part003()), new SystemContext.SystemPublishment.SystemPartParametry(3,1,"//documents/document-003.xml"), new SystemContext.SamRegistry("//documents/registry-003.xml"), new SystemContext.Username("username"), new SystemContext.Password("password")),

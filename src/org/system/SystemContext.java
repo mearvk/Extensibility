@@ -306,13 +306,13 @@ public class SystemContext
 
 	public static class SystemContextInitializer
 	{
-		public String reference_id;
+		public String type;
 
 		public SystemContextChangeListener change_listener;
 
-		public SystemContextInitializer(String reference_id)
+		public SystemContextInitializer(String type)
 		{
-			this.reference_id = reference_id;
+			this.type = type;
 		}
 	}
 
@@ -330,16 +330,24 @@ public class SystemContext
 
 		public ArrayList<SystemContext> contexts = new ArrayList<SystemContext>();
 
-		public String base = "//";
+		public String project = "";
+
+		public String base = "";
+
+		public String branch = "";
 
 		public SystemContextStructure()
 		{
 
 		}
 
-		public SystemContextStructure(String base, String branch)
+		public SystemContextStructure(String project, String base, String branch)
 		{
+			this.project = project;
 
+			this.base = base;
+
+			this.branch = branch;
 		}
 
 		public void add(String context, SystemPublishment publishment)
