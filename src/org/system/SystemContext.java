@@ -176,9 +176,9 @@ public class SystemContext
 
 		public OnQuitListener onquitlistener = new OnQuitListener(this);
 
-		public SystemContextChangeListener(String url, Integer port)
+		public SystemContextChangeListener(String project, String context, Integer port)
 		{
-			this.server = new SystemContextHTTPServer(url, port);
+			this.server = new SystemContextHTTPServer(project, context, port);
 		}
 
 		public static class StateChangeEvent
@@ -437,12 +437,16 @@ public class SystemContext
 
 		public Connector connector = new Connector(this);
 
+		public String project;
+
 		public String context;
 
 		public Integer port;
 
-		public SystemHTTPServer(String context, Integer port)
+		public SystemHTTPServer(String project, String context, Integer port)
 		{
+			this.project = project;
+
 			this.context = context;
 
 			this.port = port;
@@ -453,7 +457,7 @@ public class SystemContext
 
 				SystemHTTPServer.productionURL = new File(".").getCanonicalPath() + "/out/production/mearvk";
 
-				SystemHTTPServer.sharedURL = SystemHTTPServer.productionURL + File.separator + "shared";
+				SystemHTTPServer.sharedURL = SystemHTTPServer.productionURL + File.separator + "shared" + File.separator + this.project;
 
 				//
 
@@ -489,8 +493,7 @@ public class SystemContext
 
 					try
 					{
-						File f = new File(SystemHTTPServer.sharedURL+File.separator+"systems"+File.separator+this.port.toString()+File.separator+this.context);
-
+						File f = new File(SystemHTTPServer.sharedURL+File.separator+this.port.toString()+File.separator+this.context);
 
 						f.mkdirs();
 
@@ -504,8 +507,7 @@ public class SystemContext
 				else
 				{
 					directory.mkdirs();
-				}
-			}
+				}}
 			catch(Exception e)
 			{
 				System.out.println("Error Creating Server Directories; Please Configure Yourself. It.");
@@ -665,12 +667,16 @@ public class SystemContext
 
 		public Connector connector = new Connector(this);
 
+		public String project;
+
 		public String context;
 
 		public Integer port;
 
-		public SystemContextHTTPServer(String context, Integer port)
+		public SystemContextHTTPServer(String project, String context, Integer port)
 		{
+			this.project = project;
+
 			this.context = context;
 
 			this.port = port;
@@ -683,7 +689,7 @@ public class SystemContext
 
 				SystemContextHTTPServer.productionURL = new File(".").getCanonicalPath() + "/out/production/mearvk";
 
-				SystemContextHTTPServer.sharedURL = SystemContextHTTPServer.productionURL + File.separator + "shared";
+				SystemContextHTTPServer.sharedURL = SystemContextHTTPServer.productionURL + File.separator + "shared" + File.separator + this.project;
 
 				//
 
@@ -719,7 +725,7 @@ public class SystemContext
 
 					try
 					{
-						File f = new File(SystemContextHTTPServer.sharedURL+File.separator+"contexts"+File.separator+this.port.toString()+File.separator+this.context);
+						File f = new File(SystemContextHTTPServer.sharedURL+File.separator+this.port.toString()+File.separator+this.context);
 
 						f.mkdirs();
 
