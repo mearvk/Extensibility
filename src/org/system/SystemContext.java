@@ -138,20 +138,33 @@ public class SystemContext
 
 	public static class Username
 	{
+		public String protocol;
+
+		public String url;
 		public String username;
 
-		public Username(String username)
+		public Username(String protocol, String url, String username)
 		{
+			this.protocol = protocol;
+
+			this.url = url;
+
 			this.username = username;
 		}
 	}
 
 	public static class Password
 	{
+		public String protocol;
+		public String url;
 		public String password;
 
-		public Password(String password)
+		public Password(String protocol, String url, String password)
 		{
+			this.protocol = protocol;
+
+			this.url = url;
+
 			this.password = password;
 		}
 	}
