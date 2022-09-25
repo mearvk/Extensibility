@@ -2,6 +2,14 @@ package org.system.http.partwise;
 
 public class HttpServer
 {
+	public static class Part000
+	{
+		public Part000(String name)
+		{
+
+		}
+	}
+
 	public static class Part001
 	{
 		public Part001(String name)
@@ -61,6 +69,14 @@ public class HttpServer
 	public static class Part008
 	{
 		public Part008(String name)
+		{
+
+		}
+	}
+
+	public static class Part009
+	{
+		public Part009(String name)
 		{
 
 		}
