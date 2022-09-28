@@ -1,6 +1,5 @@
 package org.system;
 
-import org.system.http.HttpServer;
 import org.system.publishment.PublishmentContext;
 
 import java.io.*;
@@ -30,6 +29,8 @@ public class SystemContext
 	public SystemContextStructure structure;
 
 	public SystemPublishmentContext context;
+
+	public RemoteSystemPublishmentContext rcontext;
 
 	public SystemContext(Username username, Password password, SystemProgram program)
 	{
@@ -97,8 +98,6 @@ public class SystemContext
 
 		this.password = password;
 
-		this.program = program;
-
 		this.listener = listener;
 
 		this.initializer = initializer;
@@ -106,6 +105,23 @@ public class SystemContext
 		this.structure = structure;
 
 		this.context = context;
+
+		SystemContextStructure.BASE.contexts.add(this);
+	}
+
+	public SystemContext(Username username, Password password, SystemHTTPServer server, SystemContextChangeListener listener, SystemContextInitializer initializer, SystemContextStructure structure, RemoteSystemPublishmentContext rcontext)
+	{
+		this.username = username;
+
+		this.password = password;
+
+		this.listener = listener;
+
+		this.initializer = initializer;
+
+		this.structure = structure;
+
+		this.rcontext = rcontext;
 
 		SystemContextStructure.BASE.contexts.add(this);
 	}
@@ -382,6 +398,14 @@ public class SystemContext
 			{
 				this.stopping.add(publishment);
 			}
+		}
+	}
+
+	public static class RemoteSystemPublishmentContext
+	{
+		public RemoteSystemPublishmentContext(String protocol, String block, String name)
+		{
+
 		}
 	}
 
@@ -676,6 +700,22 @@ public class SystemContext
 					{
 						System.out.println(">> Error exception: please handle yourself.");
 					}
+				}
+			}
+		}
+
+		public static class Messaging
+		{
+			public Messaging()
+			{
+
+			}
+
+			public static class Publishment
+			{
+				public Publishment(String protocol, String block, String description)
+				{
+
 				}
 			}
 		}

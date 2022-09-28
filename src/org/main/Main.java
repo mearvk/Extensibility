@@ -3,14 +3,17 @@ package org.main;
 import org.system.SystemContext;
 import org.system.SystemContext.SystemContextStructure;
 import org.system.publishment.PublishmentContext;
-import org.system.rmi.RMISystemContext;
 
 public class Main
 {
+	PublishmentContext publishment;
+
 	public static void main(String... args)
 	{
 		PublishmentContext publishment = new PublishmentContext
 		(
+				new SystemContext.SystemHTTPServer("mearvk.us","http-publishment-server", 19998),
+				new SystemContext.SystemHTTPServer.Messaging.Publishment("POST", "{program-name}/publishments", "http-server-parametry"),
 				new SystemContext.SystemPublishment(0, new SystemContext.SystemPublishment.SystemPart(new org.system.http.partwise.HttpServer.Part000("{branch name}")), new SystemContext.SystemPublishment.SystemPartParametry(0, 0x001,"//documents/document-000.xml"), new SystemContext.SamRegistry("//documents/registry-000.xml"), new SystemContext.Username("jndi", "mearvk.us", "{username}"), new SystemContext.Password("jndi", "mearvk.us", "{password}")),
 				new SystemContext.SystemPublishment(1, new SystemContext.SystemPublishment.SystemPart(new org.system.http.partwise.HttpServer.Part001("{firewall}")), new SystemContext.SystemPublishment.SystemPartParametry(1, 0x001,"//documents/document-001.xml"), new SystemContext.SamRegistry("//documents/registry-001.xml"), new SystemContext.Username("jndi", "mearvk.us", "{username}"), new SystemContext.Password("jndi", "mearvk.us", "{password}")),
 				new SystemContext.SystemPublishment(2, new SystemContext.SystemPublishment.SystemPart(new org.system.http.partwise.HttpServer.Part002("{authentication}")), new SystemContext.SystemPublishment.SystemPartParametry(2,0x001,"//documents/document-002.xml"), new SystemContext.SamRegistry("//documents/registry-002.xml"), new SystemContext.Username("jndi", "mearvk.us", "{username}"), new SystemContext.Password("jndi", "mearvk.us", "{password}")),
@@ -31,7 +34,7 @@ public class Main
 			new SystemContext.SystemContextChangeListener("www.mearvk.org","change-context-listener", 40000),
 			new SystemContext.SystemContextInitializer("dynamic"),
 			new SystemContextStructure("www.mearvk.org","system/servers","http-server"),
-			new SystemContext.SystemPublishmentContext(publishment)
+			new SystemContext.RemoteSystemPublishmentContext("GET", "{program-name}/publishments", "http-server-parametry")
 		);
 	}
 }
