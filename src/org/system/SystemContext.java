@@ -1,6 +1,7 @@
 package org.system;
 
 import org.system.http.HttpServer;
+import org.system.publishment.PublishmentContext;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -27,6 +28,8 @@ public class SystemContext
 	public SystemContextInitializer initializer;
 
 	public SystemContextStructure structure;
+
+	public SystemPublishmentContext context;
 
 	public SystemContext(Username username, Password password, SystemProgram program)
 	{
@@ -88,7 +91,7 @@ public class SystemContext
 		SystemContextStructure.BASE.contexts.add(this);
 	}
 
-	public SystemContext(Username username, Password password, SystemProgram program, SystemContextChangeListener listener, SystemContextInitializer initializer, SystemContextStructure structure, SystemPublishment...publishments)
+	public SystemContext(Username username, Password password, SystemHTTPServer server, SystemContextChangeListener listener, SystemContextInitializer initializer, SystemContextStructure structure, SystemPublishmentContext context)
 	{
 		this.username = username;
 
@@ -102,7 +105,7 @@ public class SystemContext
 
 		this.structure = structure;
 
-		this.publishments = new ArrayList<SystemPublishment>(Arrays.asList(publishments));
+		this.context = context;
 
 		SystemContextStructure.BASE.contexts.add(this);
 	}
@@ -379,6 +382,14 @@ public class SystemContext
 			{
 				this.stopping.add(publishment);
 			}
+		}
+	}
+
+	public static class SystemPublishmentContext
+	{
+		public SystemPublishmentContext(PublishmentContext context)
+		{
+
 		}
 	}
 
