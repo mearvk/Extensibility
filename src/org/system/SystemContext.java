@@ -1,6 +1,7 @@
 package org.system;
 
 import org.system.publishment.PublishmentContext;
+import org.system.publishment.SystemPublishment;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -414,66 +415,6 @@ public class SystemContext
 		public SystemPublishmentContext(PublishmentContext context)
 		{
 
-		}
-	}
-
-	public static class SystemPublishment
-	{
-		public SystemPublishment(Integer order, SystemPart part)
-		{
-
-		}
-
-		public SystemPublishment(Integer order, SystemPart part, SystemPartParametry parametry, SamRegistry samregistry, Username username, Password password)
-		{
-
-		}
-
-		public SystemPublishment(Integer order, SystemPart part, SystemPartParametry parametry, Username username, Password password)
-		{
-
-		}
-		public SystemPublishment(Integer order, SystemPart part, SystemPartParametry parametry)
-		{
-
-		}
-
-		public static class SystemPart
-		{
-			public SystemPart()
-			{
-
-			}
-
-			public SystemPart(Object object)
-			{
-
-			}
-
-			public SystemPart(Class klass)
-			{
-
-			}
-		}
-
-		public static class SystemPartParametry
-		{
-			public Integer partnumber;
-
-			public Integer commonpartnumber;
-
-			public String document;
-
-			public File file;
-
-			public SystemPartParametry(Integer part_number, Integer common_part_number, String document)
-			{
-				this.partnumber = part_number;
-
-				this.commonpartnumber = common_part_number;
-
-				this.document = document;
-			}
 		}
 	}
 
