@@ -1,6 +1,6 @@
 package org.system;
 
-import org.system.http.context.HttpCallContext;
+import org.system.servers.context.HttpCallContext;
 import java.net.Socket;
 import java.util.Date;
 
@@ -13,7 +13,7 @@ public class SocketDatagram implements Comparable<SocketDatagram>
 
 	public Socket socket;
 
-	public org.system.http.HttpServer server;
+	public org.system.servers.HttpServer server;
 
 	public int type;
 
@@ -37,7 +37,7 @@ public class SocketDatagram implements Comparable<SocketDatagram>
 		this.context = new HttpCallContext();
 	}
 
-	public SocketDatagram(int type, Socket socket, org.system.http.HttpServer server)
+	public SocketDatagram(int type, Socket socket, org.system.servers.HttpServer server)
 	{
 		this.type = type;
 

@@ -1,6 +1,6 @@
 package org.system.rmi;
 
-import org.system.http.HttpServer;
+import org.system.servers.HttpServer;
 import org.system.SystemRunner;
 
 import java.io.File;
@@ -160,7 +160,7 @@ public class RMISystemContext
 		{
 			this.url = url;
 
-			this.server = new org.system.http.HttpServer(port);
+			this.server = new org.system.servers.HttpServer(port);
 
 			this.server.publish(this.url);
 		}

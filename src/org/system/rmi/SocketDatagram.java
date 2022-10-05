@@ -1,7 +1,7 @@
 package org.system.rmi;
 
 import org.system.rmi.http.HttpServer;
-import org.system.http.context.HttpCallContext;
+import org.system.servers.context.HttpCallContext;
 
 import java.net.Socket;
 import java.util.Date;
