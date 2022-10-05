@@ -53,7 +53,7 @@ public class SystemPublishment
 
 		public File file;
 
-		public SystemPartParametry(Integer part_number, Integer common_part_number, String document)
+		public SystemPartParametry(Integer part_number, Integer common_part_number, String document, SystemContext.SamRegistry sam_registry, SystemContext.Username username, SystemContext.Password password)
 		{
 			this.partnumber = part_number;
 
