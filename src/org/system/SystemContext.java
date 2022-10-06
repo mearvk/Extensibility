@@ -412,6 +412,10 @@ public class SystemContext
 
 	public static class SystemPublishmentContext
 	{
+		public SystemPublishmentContext(String program_name, String base_name, String branch_name)
+		{
+
+		}
 		public SystemPublishmentContext(PublishmentContext context)
 		{
 

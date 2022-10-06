@@ -11,7 +11,7 @@ public class Main
 {
 	public static void main(String... args)
 	{
-		SystemContext context = new SystemContext
+		SystemContext http_context = new SystemContext
 		(
 			new SystemContext.Username("jndi", "mearvk.us", "{username}"),
 			new SystemContext.Password("jndi", "mearvk.us", "{password}"),
@@ -19,11 +19,23 @@ public class Main
 			new SystemContext.SystemContextChangeListener("www.mearvk.org","change-context-listener", 40000),
 			new SystemContext.SystemContextInitializer("dynamic"),
 			new SystemContextStructure("www.mearvk.org","system/servers","http-server"),
-			new SystemContext.RemoteSystemPublishmentContext("GET", "{program-name}/publishments", "http-server-parametry")
+			new SystemContext.RemoteSystemPublishmentContext("GET", "{program-part-number}/{base-name}/{branch-name}/publishments", "http-server-parametry")
+		);
+
+		SystemContext jndi_context = new SystemContext
+		(
+			new SystemContext.Username("jndi", "mearvk.us", "{username}"),
+			new SystemContext.Password("jndi", "mearvk.us", "{password}"),
+			new SystemContext.SystemHTTPServer("www.mearvk.us","http-server", 39998),
+			new SystemContext.SystemContextChangeListener("www.mearvk.org","change-context-listener", 40000),
+			new SystemContext.SystemContextInitializer("dynamic"),
+			new SystemContextStructure("www.mearvk.org","system/servers","jndi-server"),
+			new SystemContext.RemoteSystemPublishmentContext("GET", "{program-part-number}/{base-name}/{branch-name}/publishments", "http-server-parametry")
 		);
 
 		OrdenmentContext http_server = new OrdenmentContext
 		(
+			new SystemContext.SystemPublishmentContext("http-server", "mearvk.us", "federal"),
 			new OrdenmentPublishment(0x00001, new org.system.servers.http.system.System("{branch name}")),
 			new OrdenmentPublishment(0x00002, new org.system.servers.http.firewall.Firewall("{firewall}")),
 			new OrdenmentPublishment(0x00003, new org.system.servers.http.authentication.Authenticator("{authentication}")),
@@ -37,6 +49,7 @@ public class Main
 
 		OrdenmentContext jndi_server = new OrdenmentContext
 		(
+			new SystemContext.SystemPublishmentContext("jndi", "mearvk.us", "federal"),
 			new OrdenmentPublishment(0x00010, new org.system.servers.jndi.system.System("{branch name}")),
 			new OrdenmentPublishment(0x00011, new org.system.servers.jndi.firewall.Firewall("{firewall}")),
 			new OrdenmentPublishment(0x00012, new org.system.servers.jndi.authentication.Authenticator("{authentication}")),
