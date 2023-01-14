@@ -44,30 +44,30 @@ public class Main
 		(
 				new OrderedContext
 				(
-						new SystemContext.SystemPublishmentContext("http-server", "mearvk.us", "federal"),
-						new OrderedParts("0x0000-0000-0001", "housing.mearvk.us", "mearvk.us", "{names}/{modest}"),
-						new OrderedParts("0x0000-0000-0002", "housing.mearvk.us", "mearvk.us", "{firewalls}/{modest}"),
-						new OrderedParts("0x0000-0000-0003", "housing.mearvk.us", "mearvk.us", "{authentication}/{modest}"),
-						new OrderedParts("0x0000-0000-0004", "housing.mearvk.us", "mearvk.us", "{packet-inspection}/{modest}"),
-						new OrderedParts("0x0000-0000-0005", "housing.mearvk.us", "mearvk.us", "{logging}/{modest}"),
-						new OrderedParts("0x0000-0000-0006", "housing.mearvk.us", "mearvk.us", "{exceptions}/{modest}"),
-						new OrderedParts("0x0000-0000-0007", "housing.mearvk.us", "mearvk.us", "{parser}/{modest}"),
-						new OrderedParts("0x0000-0000-0008", "housing.mearvk.us", "mearvk.us", "{file-io}/{modest}"),
-						new OrderedParts("0x0000-0000-0009", "housing.mearvk.us", "mearvk.us", "{output-io}/{modest}")
+					new SystemContext.SystemPublishmentContext("http-server", "mearvk.us", "federal"),
+					new OrderedParts("0x0000-0000-0001", "housing.mearvk.us", "mearvk.us", "{names}/{modest}"),
+					new OrderedParts("0x0000-0000-0002", "housing.mearvk.us", "mearvk.us", "{firewalls}/{modest}"),
+					new OrderedParts("0x0000-0000-0003", "housing.mearvk.us", "mearvk.us", "{authentication}/{modest}"),
+					new OrderedParts("0x0000-0000-0004", "housing.mearvk.us", "mearvk.us", "{packet-inspection}/{modest}"),
+					new OrderedParts("0x0000-0000-0005", "housing.mearvk.us", "mearvk.us", "{logging}/{modest}"),
+					new OrderedParts("0x0000-0000-0006", "housing.mearvk.us", "mearvk.us", "{exceptions}/{modest}"),
+					new OrderedParts("0x0000-0000-0007", "housing.mearvk.us", "mearvk.us", "{parser}/{modest}"),
+					new OrderedParts("0x0000-0000-0008", "housing.mearvk.us", "mearvk.us", "{file-io}/{modest}"),
+					new OrderedParts("0x0000-0000-0009", "housing.mearvk.us", "mearvk.us", "{output-io}/{modest}")
 				),
 
 				new OrderedContext
 				(
-						new SystemContext.SystemPublishmentContext("jndi-server", "mearvk.us", "federal"),
-						new OrderedParts("0x0000-0000-0001", "housing.mearvk.us", "mearvk.us", "{names}/{modest}"),
-						new OrderedParts("0x0000-0000-0002", "housing.mearvk.us", "mearvk.us", "{firewalls}/{modest}"),
-						new OrderedParts("0x0000-0000-0003", "housing.mearvk.us", "mearvk.us", "{authentication}/{modest}"),
-						new OrderedParts("0x0000-0000-0004", "housing.mearvk.us", "mearvk.us", "{packet-inspection}/{modest}"),
-						new OrderedParts("0x0000-0000-0005", "housing.mearvk.us", "mearvk.us", "{logging}/{modest}"),
-						new OrderedParts("0x0000-0000-0006", "housing.mearvk.us", "mearvk.us", "{exceptions}/{modest}"),
-						new OrderedParts("0x0000-0000-0007", "housing.mearvk.us", "mearvk.us", "{parser}/{modest}"),
-						new OrderedParts("0x0000-0000-0008", "housing.mearvk.us", "mearvk.us", "{file-io}/{modest}"),
-						new OrderedParts("0x0000-0000-0009", "housing.mearvk.us", "mearvk.us", "{output-io}/{modest}")
+					new SystemContext.SystemPublishmentContext("jndi-server", "mearvk.us", "federal"),
+					new OrderedParts("0x0000-0000-0001", "housing.mearvk.us", "mearvk.us", "{names}/{modest}"),
+					new OrderedParts("0x0000-0000-0002", "housing.mearvk.us", "mearvk.us", "{firewalls}/{modest}"),
+					new OrderedParts("0x0000-0000-0003", "housing.mearvk.us", "mearvk.us", "{authentication}/{modest}"),
+					new OrderedParts("0x0000-0000-0004", "housing.mearvk.us", "mearvk.us", "{packet-inspection}/{modest}"),
+					new OrderedParts("0x0000-0000-0005", "housing.mearvk.us", "mearvk.us", "{logging}/{modest}"),
+					new OrderedParts("0x0000-0000-0006", "housing.mearvk.us", "mearvk.us", "{exceptions}/{modest}"),
+					new OrderedParts("0x0000-0000-0007", "housing.mearvk.us", "mearvk.us", "{parser}/{modest}"),
+					new OrderedParts("0x0000-0000-0008", "housing.mearvk.us", "mearvk.us", "{file-io}/{modest}"),
+					new OrderedParts("0x0000-0000-0009", "housing.mearvk.us", "mearvk.us", "{output-io}/{modest}")
 				)
 		);
 
