@@ -1,16 +1,16 @@
 package org.system.ordenments.containers;
 
 import org.system.SystemContext;
-import org.system.ordenments.OrdenmentContext;
-import org.system.ordenments.OrdenmentPublishment;
+import org.system.ordenments.OrderedContext;
+import org.system.ordenments.OrderedParts;
 
 public class OrdenmentContextContainer
 {
-	public OrdenmentContextContainer(SystemContext.SystemPublishmentContext context, OrdenmentPublishment...publishments)
+	public OrdenmentContextContainer(SystemContext.SystemPublishmentContext context, OrderedParts...publishments)
 	{
 
 	}
 
-	public OrdenmentContextContainer(OrdenmentContext...contexts) {
+	public OrdenmentContextContainer(OrderedContext...contexts) {
 	}
 }

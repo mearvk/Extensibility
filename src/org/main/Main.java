@@ -3,8 +3,8 @@ package org.main;
 import org.system.SystemContext;
 import org.system.SystemContext.SystemContextStructure;
 import org.system.SystemContextContainer;
-import org.system.ordenments.OrdenmentContext;
-import org.system.ordenments.OrdenmentPublishment;
+import org.system.ordenments.OrderedContext;
+import org.system.ordenments.OrderedParts;
 import org.system.ordenments.containers.OrdenmentContextContainer;
 import org.system.publishment.PublishmentContext;
 import org.system.publishment.SystemPublishment;
@@ -42,32 +42,32 @@ public class Main
 
 		OrdenmentContextContainer ordcontext = new OrdenmentContextContainer
 		(
-				new OrdenmentContext
+				new OrderedContext
 				(
 						new SystemContext.SystemPublishmentContext("http-server", "mearvk.us", "federal"),
-						new OrdenmentPublishment(0x00001, new org.system.servers.http.system.System("{branch name}")),
-						new OrdenmentPublishment(0x00002, new org.system.servers.http.firewall.Firewall("{firewall}")),
-						new OrdenmentPublishment(0x00003, new org.system.servers.http.authentication.Authenticator("{authentication}")),
-						new OrdenmentPublishment(0x00004, new org.system.servers.http.inspection.PacketInspector("{packet inspection}")),
-						new OrdenmentPublishment(0x00005, new org.system.servers.http.logging.Logging("{dns/ip/port logging}")),
-						new OrdenmentPublishment(0x00006, new org.system.servers.http.exceptions.Exception("{exception logging}")),
-						new OrdenmentPublishment(0x00007, new org.system.servers.http.parsing.Parser("{parser}")),
-						new OrdenmentPublishment(0x00008, new org.system.servers.http.nio.FileHandler("{file handler}")),
-						new OrdenmentPublishment(0x00009, new org.system.servers.http.output.OutputHandler("{output handler}"))
+						new OrderedParts("0x0000-0000-0001", "housing.mearvk.us", "mearvk.us", "{names}/{modest}"),
+						new OrderedParts("0x0000-0000-0002", "housing.mearvk.us", "mearvk.us", "{firewalls}/{modest}"),
+						new OrderedParts("0x0000-0000-0003", "housing.mearvk.us", "mearvk.us", "{authentication}/{modest}"),
+						new OrderedParts("0x0000-0000-0004", "housing.mearvk.us", "mearvk.us", "{packet-inspection}/{modest}"),
+						new OrderedParts("0x0000-0000-0005", "housing.mearvk.us", "mearvk.us", "{logging}/{modest}"),
+						new OrderedParts("0x0000-0000-0006", "housing.mearvk.us", "mearvk.us", "{exceptions}/{modest}"),
+						new OrderedParts("0x0000-0000-0007", "housing.mearvk.us", "mearvk.us", "{parser}/{modest}"),
+						new OrderedParts("0x0000-0000-0008", "housing.mearvk.us", "mearvk.us", "{file-io}/{modest}"),
+						new OrderedParts("0x0000-0000-0009", "housing.mearvk.us", "mearvk.us", "{output-io}/{modest}")
 				),
 
-				new OrdenmentContext
+				new OrderedContext
 				(
 						new SystemContext.SystemPublishmentContext("jndi-server", "mearvk.us", "federal"),
-						new OrdenmentPublishment(0x00010, new org.system.servers.jndi.system.System("{branch name}")),
-						new OrdenmentPublishment(0x00011, new org.system.servers.jndi.firewall.Firewall("{firewall}")),
-						new OrdenmentPublishment(0x00012, new org.system.servers.jndi.authentication.Authenticator("{authentication}")),
-						new OrdenmentPublishment(0x00013, new org.system.servers.jndi.inspection.PacketInspector("{packet inspection}")),
-						new OrdenmentPublishment(0x00014, new org.system.servers.jndi.logging.Logging("{dns/ip/port logging}")),
-						new OrdenmentPublishment(0x00015, new org.system.servers.jndi.exceptions.Exception("{exception logging}")),
-						new OrdenmentPublishment(0x00016, new org.system.servers.jndi.parsing.Parser("{parser}")),
-						new OrdenmentPublishment(0x00017, new org.system.servers.jndi.nio.SideHandler("{file handler}")),
-						new OrdenmentPublishment(0x00018, new org.system.servers.jndi.output.OutputHandler("{output handler}"))
+						new OrderedParts("0x0000-0000-0001", "housing.mearvk.us", "mearvk.us", "{names}/{modest}"),
+						new OrderedParts("0x0000-0000-0002", "housing.mearvk.us", "mearvk.us", "{firewalls}/{modest}"),
+						new OrderedParts("0x0000-0000-0003", "housing.mearvk.us", "mearvk.us", "{authentication}/{modest}"),
+						new OrderedParts("0x0000-0000-0004", "housing.mearvk.us", "mearvk.us", "{packet-inspection}/{modest}"),
+						new OrderedParts("0x0000-0000-0005", "housing.mearvk.us", "mearvk.us", "{logging}/{modest}"),
+						new OrderedParts("0x0000-0000-0006", "housing.mearvk.us", "mearvk.us", "{exceptions}/{modest}"),
+						new OrderedParts("0x0000-0000-0007", "housing.mearvk.us", "mearvk.us", "{parser}/{modest}"),
+						new OrderedParts("0x0000-0000-0008", "housing.mearvk.us", "mearvk.us", "{file-io}/{modest}"),
+						new OrderedParts("0x0000-0000-0009", "housing.mearvk.us", "mearvk.us", "{output-io}/{modest}")
 				)
 		);
 
