@@ -16,59 +16,59 @@ public class Main
 
 		SystemContextContainer syscontext = new SystemContextContainer
 		(
-				new SystemContext
-				(
-					new SystemContext.Username("jndi", "mearvk.us", "{username}"),
-					new SystemContext.Password("jndi", "mearvk.us", "{password}"),
-					new SystemContext.SystemHTTPServer("www.mearvk.us","http-server", 39998),
-					new SystemContext.SystemContextChangeListener("www.mearvk.org","change-context-listener", 40000),
-					new SystemContext.SystemContextInitializer("dynamic"),
-					new SystemContextStructure("www.mearvk.org","system/servers","http-server"),
-					new SystemContext.RemoteSystemPublishmentContext("GET", "{program-part-number}/{base-name}/{branch-name}/publishments", "http-server-parametry")
-				),
+			new SystemContext
+			(
+				new SystemContext.Username("jndi", "mearvk.us", "{username}"),
+				new SystemContext.Password("jndi", "mearvk.us", "{password}"),
+				new SystemContext.SystemHTTPServer("www.mearvk.us","http-server", 39998),
+				new SystemContext.SystemContextChangeListener("www.mearvk.org","change-context-listener", 40000),
+				new SystemContext.SystemContextInitializer("dynamic"),
+				new SystemContextStructure("www.mearvk.org","system/servers","http-server"),
+				new SystemContext.RemoteSystemPublishmentContext("GET", "{program-part-number}/{base-name}/{branch-name}/publishments", "http-server-parametry")
+			),
 
-				new SystemContext
-				(
-					new SystemContext.Username("jndi", "mearvk.us", "{username}"),
-					new SystemContext.Password("jndi", "mearvk.us", "{password}"),
-					new SystemContext.SystemHTTPServer("www.mearvk.us","http-server", 39998),
-					new SystemContext.SystemContextChangeListener("www.mearvk.org","change-context-listener", 40000),
-					new SystemContext.SystemContextInitializer("dynamic"),
-					new SystemContextStructure("www.mearvk.org","system/servers","jndi-server"),
-					new SystemContext.RemoteSystemPublishmentContext("GET", "{program-part-number}/{base-name}/{branch-name}/publishments", "http-server-parametry")
-				)
+			new SystemContext
+			(
+				new SystemContext.Username("jndi", "mearvk.us", "{username}"),
+				new SystemContext.Password("jndi", "mearvk.us", "{password}"),
+				new SystemContext.SystemHTTPServer("www.mearvk.us","http-server", 39998),
+				new SystemContext.SystemContextChangeListener("www.mearvk.org","change-context-listener", 40000),
+				new SystemContext.SystemContextInitializer("dynamic"),
+				new SystemContextStructure("www.mearvk.org","system/servers","jndi-server"),
+				new SystemContext.RemoteSystemPublishmentContext("GET", "{program-part-number}/{base-name}/{branch-name}/publishments", "http-server-parametry")
+			)
 		);
 
 
 		OrdenmentContextContainer ordcontext = new OrdenmentContextContainer
 		(
-				new OrderedContext
-				(
-					new SystemContext.SystemPublishmentContext("http-server", "mearvk.us", "federal"),
-					new OrderedParts("0x0000-0000-0001", "housing.mearvk.us", "mearvk.us", "{names}/{modest}"),
-					new OrderedParts("0x0000-0000-0002", "housing.mearvk.us", "mearvk.us", "{firewalls}/{modest}"),
-					new OrderedParts("0x0000-0000-0003", "housing.mearvk.us", "mearvk.us", "{authentication}/{modest}"),
-					new OrderedParts("0x0000-0000-0004", "housing.mearvk.us", "mearvk.us", "{packet-inspection}/{modest}"),
-					new OrderedParts("0x0000-0000-0005", "housing.mearvk.us", "mearvk.us", "{logging}/{modest}"),
-					new OrderedParts("0x0000-0000-0006", "housing.mearvk.us", "mearvk.us", "{exceptions}/{modest}"),
-					new OrderedParts("0x0000-0000-0007", "housing.mearvk.us", "mearvk.us", "{parser}/{modest}"),
-					new OrderedParts("0x0000-0000-0008", "housing.mearvk.us", "mearvk.us", "{file-io}/{modest}"),
-					new OrderedParts("0x0000-0000-0009", "housing.mearvk.us", "mearvk.us", "{output-io}/{modest}")
-				),
+			new OrderedContext
+			(
+				new SystemContext.SystemPublishmentContext("http-server", "mearvk.us", "federal"),
+				new OrderedParts("0x0000-0000-0001", "housing.mearvk.us", "mearvk.us", "{names}/{modest}"),
+				new OrderedParts("0x0000-0000-0002", "housing.mearvk.us", "mearvk.us", "{firewalls}/{modest}"),
+				new OrderedParts("0x0000-0000-0003", "housing.mearvk.us", "mearvk.us", "{authentication}/{modest}"),
+				new OrderedParts("0x0000-0000-0004", "housing.mearvk.us", "mearvk.us", "{packet-inspection}/{modest}"),
+				new OrderedParts("0x0000-0000-0005", "housing.mearvk.us", "mearvk.us", "{logging}/{modest}"),
+				new OrderedParts("0x0000-0000-0006", "housing.mearvk.us", "mearvk.us", "{exceptions}/{modest}"),
+				new OrderedParts("0x0000-0000-0007", "housing.mearvk.us", "mearvk.us", "{parser}/{modest}"),
+				new OrderedParts("0x0000-0000-0008", "housing.mearvk.us", "mearvk.us", "{file-io}/{modest}"),
+				new OrderedParts("0x0000-0000-0009", "housing.mearvk.us", "mearvk.us", "{output-io}/{modest}")
+			),
 
-				new OrderedContext
-				(
-					new SystemContext.SystemPublishmentContext("jndi-server", "mearvk.us", "federal"),
-					new OrderedParts("0x0000-0000-0001", "housing.mearvk.us", "mearvk.us", "{names}/{modest}"),
-					new OrderedParts("0x0000-0000-0002", "housing.mearvk.us", "mearvk.us", "{firewalls}/{modest}"),
-					new OrderedParts("0x0000-0000-0003", "housing.mearvk.us", "mearvk.us", "{authentication}/{modest}"),
-					new OrderedParts("0x0000-0000-0004", "housing.mearvk.us", "mearvk.us", "{packet-inspection}/{modest}"),
-					new OrderedParts("0x0000-0000-0005", "housing.mearvk.us", "mearvk.us", "{logging}/{modest}"),
-					new OrderedParts("0x0000-0000-0006", "housing.mearvk.us", "mearvk.us", "{exceptions}/{modest}"),
-					new OrderedParts("0x0000-0000-0007", "housing.mearvk.us", "mearvk.us", "{parser}/{modest}"),
-					new OrderedParts("0x0000-0000-0008", "housing.mearvk.us", "mearvk.us", "{file-io}/{modest}"),
-					new OrderedParts("0x0000-0000-0009", "housing.mearvk.us", "mearvk.us", "{output-io}/{modest}")
-				)
+			new OrderedContext
+			(
+				new SystemContext.SystemPublishmentContext("jndi-server", "mearvk.us", "federal"),
+				new OrderedParts("0x0000-0000-0001", "housing.mearvk.us", "mearvk.us", "{names}/{modest}"),
+				new OrderedParts("0x0000-0000-0002", "housing.mearvk.us", "mearvk.us", "{firewalls}/{modest}"),
+				new OrderedParts("0x0000-0000-0003", "housing.mearvk.us", "mearvk.us", "{authentication}/{modest}"),
+				new OrderedParts("0x0000-0000-0004", "housing.mearvk.us", "mearvk.us", "{packet-inspection}/{modest}"),
+				new OrderedParts("0x0000-0000-0005", "housing.mearvk.us", "mearvk.us", "{logging}/{modest}"),
+				new OrderedParts("0x0000-0000-0006", "housing.mearvk.us", "mearvk.us", "{exceptions}/{modest}"),
+				new OrderedParts("0x0000-0000-0007", "housing.mearvk.us", "mearvk.us", "{parser}/{modest}"),
+				new OrderedParts("0x0000-0000-0008", "housing.mearvk.us", "mearvk.us", "{file-io}/{modest}"),
+				new OrderedParts("0x0000-0000-0009", "housing.mearvk.us", "mearvk.us", "{output-io}/{modest}")
+			)
 		);
 
 		PublishmentContext publishment = new PublishmentContext
