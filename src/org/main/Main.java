@@ -13,7 +13,6 @@ public class Main
 {
 	public static void main(String... args)
 	{
-
 		SystemContextContainer syscontext = new SystemContextContainer
 		(
 			new SystemContext
@@ -38,7 +37,6 @@ public class Main
 				new SystemContext.RemoteSystemPublishmentContext("GET", "{program-part-number}/{base-name}/{branch-name}/publishments", "http-server-parametry")
 			)
 		);
-
 
 		OrdenmentContextContainer ordcontext = new OrdenmentContextContainer
 		(
