@@ -27,7 +27,7 @@ public class SystemContext
 
 	public SystemContextInitializer initializer;
 
-	public SystemContextStructure structure;
+	public Structure structure;
 
 	public SystemPublishmentContext context;
 
@@ -41,7 +41,7 @@ public class SystemContext
 
 		this.program = program;
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
 	public SystemContext(Username username, Password password, SystemProgram program, SystemContextChangeListener listener, SystemContextInitializer initializer)
@@ -56,10 +56,10 @@ public class SystemContext
 
 		this.initializer = initializer;
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
-	public SystemContext(Username username, Password password, SystemProgram program, SystemContextChangeListener listener, SystemContextInitializer initializer, SystemContextStructure structure)
+	public SystemContext(Username username, Password password, SystemProgram program, SystemContextChangeListener listener, SystemContextInitializer initializer, Structure structure)
 	{
 		this.username = username;
 
@@ -73,10 +73,10 @@ public class SystemContext
 
 		this.structure = structure;
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
-	public SystemContext(Username username, Password password, SystemContextChangeListener listener, SystemContextInitializer initializer, SystemContextStructure structure, SystemPublishment...publishments)
+	public SystemContext(Username username, Password password, SystemContextChangeListener listener, SystemContextInitializer initializer, Structure structure, SystemPublishment...publishments)
 	{
 		this.username = username;
 
@@ -90,10 +90,10 @@ public class SystemContext
 
 		this.publishments = new ArrayList<SystemPublishment>(Arrays.asList(publishments));
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
-	public SystemContext(Username username, Password password, SystemHTTPServer server, SystemContextChangeListener listener, SystemContextInitializer initializer, SystemContextStructure structure, SystemPublishmentContext context)
+	public SystemContext(Username username, Password password, SystemHTTPServer server, SystemContextChangeListener listener, SystemContextInitializer initializer, Structure structure, SystemPublishmentContext context)
 	{
 		this.username = username;
 
@@ -107,10 +107,10 @@ public class SystemContext
 
 		this.context = context;
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
-	public SystemContext(Username username, Password password, SystemHTTPServer server, SystemContextChangeListener listener, SystemContextInitializer initializer, SystemContextStructure structure, RemoteSystemPublishmentContext rcontext)
+	public SystemContext(Username username, Password password, SystemHTTPServer server, SystemContextChangeListener listener, SystemContextInitializer initializer, Structure structure, RemoteSystemPublishmentContext rcontext)
 	{
 		this.username = username;
 
@@ -124,10 +124,10 @@ public class SystemContext
 
 		this.rcontext = rcontext;
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
-	public SystemContext(Username username, Password password, SystemHTTPServer server, SystemContextChangeListener listener, SystemContextInitializer initializer, SystemContextStructure structure, SystemPublishment...publishments)
+	public SystemContext(Username username, Password password, SystemHTTPServer server, SystemContextChangeListener listener, SystemContextInitializer initializer, Structure structure, SystemPublishment...publishments)
 	{
 		this.username = username;
 
@@ -143,7 +143,7 @@ public class SystemContext
 
 		this.publishments = new ArrayList<SystemPublishment>(Arrays.asList(publishments));
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
 	public static class SamRegistry
@@ -191,7 +191,7 @@ public class SystemContext
 
 	public static class SystemContextChangeListener
 	{
-		public ArrayList<SystemContextStructure> structures = new ArrayList<>(100);
+		public ArrayList<Structure> structures = new ArrayList<>(100);
 
 		public SystemContextHTTPServer server;
 
@@ -349,9 +349,9 @@ public class SystemContext
 		}
 	}
 
-	public static class SystemContextStructure
+	public static class Structure
 	{
-		public static final SystemContextStructure BASE = new SystemContextStructure();
+		public static final Structure BASE = new Structure();
 
 		public ArrayList<SystemPublishment> running = new ArrayList<SystemPublishment>();
 
@@ -359,7 +359,7 @@ public class SystemContext
 
 		public ArrayList<SystemPublishment> starting = new ArrayList<SystemPublishment>();
 
-		public ArrayList<SystemContextStructure> structures = new ArrayList<SystemContextStructure>();
+		public ArrayList<Structure> structures = new ArrayList<Structure>();
 
 		public ArrayList<SystemContext> contexts = new ArrayList<SystemContext>();
 
@@ -369,12 +369,12 @@ public class SystemContext
 
 		public String branch = "";
 
-		public SystemContextStructure()
+		public Structure()
 		{
 
 		}
 
-		public SystemContextStructure(String project, String base, String branch)
+		public Structure(String project, String base, String branch)
 		{
 			this.project = project;
 

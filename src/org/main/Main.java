@@ -1,7 +1,7 @@
 package org.main;
 
 import org.system.SystemContext;
-import org.system.SystemContext.SystemContextStructure;
+import org.system.SystemContext.Structure;
 import org.system.SystemContextContainer;
 import org.system.ordenments.OrderedContext;
 import org.system.ordenments.OrderedParts;
@@ -22,7 +22,7 @@ public class Main
 				new SystemContext.SystemHTTPServer("www.mearvk.us","http-server", 39998),
 				new SystemContext.SystemContextChangeListener("www.mearvk.org","change-context-listener", 40000),
 				new SystemContext.SystemContextInitializer("dynamic"),
-				new SystemContextStructure("www.mearvk.org","system/servers","http-server"),
+				new SystemContext.Structure("www.mearvk.org","system/servers","http-server"),
 				new SystemContext.RemoteSystemPublishmentContext("GET", "{program-part-number}/{base-name}/{branch-name}/publishments", "http-server-parametry")
 			),
 
@@ -33,7 +33,7 @@ public class Main
 				new SystemContext.SystemHTTPServer("www.mearvk.us","http-server", 39998),
 				new SystemContext.SystemContextChangeListener("www.mearvk.org","change-context-listener", 40000),
 				new SystemContext.SystemContextInitializer("dynamic"),
-				new SystemContextStructure("www.mearvk.org","system/servers","jndi-server"),
+				new Structure("www.mearvk.org","system/servers","jndi-server"),
 				new SystemContext.RemoteSystemPublishmentContext("GET", "{program-part-number}/{base-name}/{branch-name}/publishments", "http-server-parametry")
 			)
 		);

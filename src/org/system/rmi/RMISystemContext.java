@@ -22,7 +22,7 @@ public class RMISystemContext
 
 	public SystemContextInitializer initializer;
 
-	public SystemContextStructure structure;
+	public Structure structure;
 
 	public RMISystemContext(Username username, Password password, SystemProgram program)
 	{
@@ -32,7 +32,7 @@ public class RMISystemContext
 
 		this.program = program;
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
 	public RMISystemContext(Username username, Password password, SystemProgram program, SystemContextChangeListener listener, SystemContextInitializer initializer)
@@ -47,10 +47,10 @@ public class RMISystemContext
 
 		this.initializer = initializer;
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
-	public RMISystemContext(Username username, Password password, SystemProgram program, SystemContextChangeListener listener, SystemContextInitializer initializer, SystemContextStructure structure)
+	public RMISystemContext(Username username, Password password, SystemProgram program, SystemContextChangeListener listener, SystemContextInitializer initializer, Structure structure)
 	{
 		this.username = username;
 
@@ -64,10 +64,10 @@ public class RMISystemContext
 
 		this.structure = structure;
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
-	public RMISystemContext(Username username, Password password, SystemContextChangeListener listener, SystemContextInitializer initializer, SystemContextStructure structure, SystemPublishment...publishments)
+	public RMISystemContext(Username username, Password password, SystemContextChangeListener listener, SystemContextInitializer initializer, Structure structure, SystemPublishment...publishments)
 	{
 		this.username = username;
 
@@ -81,10 +81,10 @@ public class RMISystemContext
 
 		this.publishments = new ArrayList<SystemPublishment>(Arrays.asList(publishments));
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
-	public RMISystemContext(Username username, Password password, SystemProgram program, SystemContextChangeListener listener, SystemContextInitializer initializer, SystemContextStructure structure, SystemPublishment...publishments)
+	public RMISystemContext(Username username, Password password, SystemProgram program, SystemContextChangeListener listener, SystemContextInitializer initializer, Structure structure, SystemPublishment...publishments)
 	{
 		this.username = username;
 
@@ -100,7 +100,7 @@ public class RMISystemContext
 
 		this.publishments = new ArrayList<SystemPublishment>(Arrays.asList(publishments));
 
-		SystemContextStructure.BASE.contexts.add(this);
+		Structure.BASE.contexts.add(this);
 	}
 
 	public static class SamRegistry
@@ -137,7 +137,7 @@ public class RMISystemContext
 	{
 		public static final Integer PORT = 7777;
 
-		public ArrayList<SystemContextStructure> structures = new ArrayList<>(100);
+		public ArrayList<Structure> structures = new ArrayList<>(100);
 
 		public HttpServer server;
 		public String url;
@@ -300,9 +300,9 @@ public class RMISystemContext
 		}
 	}
 
-	public static class SystemContextStructure
+	public static class Structure
 	{
-		public static final SystemContextStructure BASE = new SystemContextStructure();
+		public static final Structure BASE = new Structure();
 
 		public ArrayList<SystemPublishment> running = new ArrayList<SystemPublishment>();
 
@@ -310,17 +310,17 @@ public class RMISystemContext
 
 		public ArrayList<SystemPublishment> starting = new ArrayList<SystemPublishment>();
 
-		public ArrayList<SystemContextStructure> structures = new ArrayList<SystemContextStructure>();
+		public ArrayList<Structure> structures = new ArrayList<Structure>();
 		public ArrayList<RMISystemContext> contexts = new ArrayList<RMISystemContext>();
 
 		public String base = "//";
 
-		public SystemContextStructure()
+		public Structure()
 		{
 
 		}
 
-		public SystemContextStructure(String base, String branch)
+		public Structure(String base, String branch)
 		{
 
 		}
