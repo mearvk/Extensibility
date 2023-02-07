@@ -13,7 +13,7 @@ public class Main
 {
 	public static void main(String... args)
 	{
-		SystemContextContainer syscontext = new SystemContextContainer
+		SystemContextContainer system_context_container = new SystemContextContainer
 		(
 			new SystemContext
 			(
@@ -38,7 +38,7 @@ public class Main
 			)
 		);
 
-		OrdenmentContextContainer ordcontext = new OrdenmentContextContainer
+		OrdenmentContextContainer ordenment_context_container = new OrdenmentContextContainer
 		(
 			new OrderedContext
 			(
@@ -69,7 +69,7 @@ public class Main
 			)
 		);
 
-		PublishmentContext publishment = new PublishmentContext
+		PublishmentContext publishment_context = new PublishmentContext
 		(
 			new SystemContext.SystemHTTPServer("mearvk.us","http-publishment-server", 19998),
 			new SystemContext.SystemHTTPServer.Messaging.Publishment("POST", "{program-name}/publishments", "http-server-parametry"),
