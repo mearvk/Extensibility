@@ -1,5 +1,7 @@
 package org.jndi;
 
+import org.jndi.objects.JNDIObjectEntry;
+
 import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -40,7 +42,7 @@ public class JNDIServer
         }
     }
 
-    public void add(String namespace, String name, Remote object) throws NotBoundException
+    public void add(String namespace, String name, JNDIObjectEntry object) throws NotBoundException
     {
         try
         {
@@ -49,7 +51,17 @@ public class JNDIServer
                 throw new NotBoundException();
             }
 
-            this.registry.bind(namespace+"."+name, object);
+            if(!namespace.equals(object.namespace))
+            {
+                throw new NotBoundException();
+            }
+
+            if(!name.equals(object.name))
+            {
+                throw new NotBoundException();
+            }
+
+            this.registry.bind(object.toString(), object);
         }
         catch(Exception e)
         {
